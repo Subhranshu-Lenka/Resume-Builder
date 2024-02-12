@@ -5,7 +5,8 @@
 }
 
 body {
-    background-image: linear-gradient(110.3deg, rgb(57, 57, 56) 97%, rgb(42, 42, 42) 3%);
+    background: linear-gradient(110.3deg, rgb(57, 57, 56) 97%, rgb(42, 42, 42) 3%);
+    font-family: sans-serif;
 }
 
 .navbar {
@@ -24,18 +25,39 @@ body {
     height: 20rem;
     align-items: center;
     justify-content: space-around;
-    font-size: 3rem;
     border: 3px solid whitesmoke;
     margin-top: 10px;
     color: whitesmoke;
+}
 
+.hero-section .wrapper h2 {
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.hero-section .wrapper p {
+    font-size: 1.5rem;
+    font-weight: 100;
 }
 
 .hero-img {
-    background-image: url("./moon.png");
+    background-image: url("../moon.png");
     background-size: cover;
     height: 10rem;
     width: 8rem;
+}
+
+.slide-container {
+    display: flex;
+    gap: 5%;
+    margin: 1rem .5rem;
+}
+
+.slides {
+    padding: 10px 1.5rem;
+    background-image: linear-gradient(135deg, cyan, blue);
+    border-radius: 15px;
+    width: 50%;
 }
 
 .template-holder {
