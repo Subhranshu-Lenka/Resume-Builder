@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build-page</title>
+    <link rel="stylesheet" href="build.css">
+</head>
+
+<body>
+    <section class="navbar">
+        <span>Home</span>
+        <span>Change temp</span>
+        <span>other action</span>
+    </section>
+
+    <section class="mid">
+        <div class="main-wrap">
+            <div class="left">
+
+                <div class="preview">
+                    <section class="general-data exp">
+                        <h1 class="name-field">John Doe</h1>
+                        <p class="headline-field">Operation Manager</p>
+                        <p class="details-field">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem cum saepe
+                            quibusdam
+                            itaque
+                            perferendis totam, .</p>
+                    </section>
+
+                    <section class="compulsary-data">
+                        <div class="summary-data">
+                            <h4>SUMMARY</h4>
+                            <p>desc</p>
+                        </div>
+
+                        <dvi class="skills-data">
+                            <h4>Skills</h4>
+                            <p>skill 1</p>
+                            <p>skill 1</p>
+                            <p>skill 1</p>
+                        </dvi>
+
+                        <div class="qualification-data">
+                            <h4>Academic Qualification</h4>
+                            <div class="course-no">
+                                <h5>Course Title</h5>
+                                <p> institute Name, city | Board | percentage ??/100 | date of passing</p>
+                            </div>
+                        </div>
+
+
+
+                    </section>
+                    <section class="additional-data">
+
+                        <div class="experience exp">
+                            <h4>EXPERIENCE</h4>
+                            <div class="wrap-company">
+                                <h5>Title</h5>
+                                <p>company name</p>
+                                <ul>
+                                    <li>keypoint 1</li>
+                                    <li>keypoint 2</li>
+                                    <li>keypoint 3</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="project exp">
+                            <h4>PROJECT</h4>
+                            <h5>Title</h5>
+                            <p>desc</p>
+                        </div>
+                    </section>
+                    <section class="achievement exp">
+                        <h4>ACHIEVEMENT</h4>
+                        <h5>Title</h5>
+                        <p>desc</p>
+                    </section>
+                    <section class="language exp">
+                        <h4>LANGUAGE</h4>
+                        <p>lang name <span>fluency</span></p>
+                    </section>
+                </div>
+                <p>How do you like that.</p>
+
+            </div>
+            <div class="right">
+
+                <div class="form">
+                    <section class="general">
+                        <div class="photo">
+                            <button id="photo-btn" onclick="document.getElementById('getFile').click()">Photo</button>
+                            <input id="getFile" type="file" accept=".png, .jpg, .jpeg" style="display: none;">
+                        </div>
+
+                        <span id="name-row">
+                            <label name="name">Name <span class="red"> * </span>
+
+                            </label>
+                            <input title="Enter your name" type="text" name="name" id="name">
+
+                            <br>
+
+                            <label name="headline">Headline <span class="red"> * </span>
+                                <input type="text" name="headline" id="headline">
+                            </label>
+                        </span>
+                        <br>
+
+                        <label name="email">Email <span class="red"> * </span>
+                            <input type="email" name="email" id="email">
+                        </label>
+
+                        <label name="phone">Phone <span class="red"> * </span>
+                            <input type="number" name="phone" id="phone">
+                        </label>
+
+                        <br>
+
+                        <label name="city">City <span class="red"> * </span>
+                            <input type="text" name="city" id="city">
+                        </label>
+
+                        <label name="pincode">Pin Code <span class="red"> * </span>
+                            <input type="number" name="pincode" id="pincode">
+                        </label>
+                    </section>
+
+                    <center><button id="general-save">Save</button>
+                        <br>
+                        <p id="mandatory-text">Note : "<span class="red"> * </span>" mandatory field. </p>
+                    </center>
+                    <hr>
+                    <section class="compulsary">
+
+                        <div class="summary">
+                            <legend>Profile Description</legend>
+                            <textarea id="summary-textbox"></textarea>
+                        </div>
+
+                        <div class="skill-wrap">
+                            <legend>Skills</legend>
+                            <div class="skills">
+                                <!-- <div class="sec-wrap">
+                                    <input type="text">
+                                    <button id="first-skill" class="remove-skill">X</button>
+                                </div> -->
+                                <button id="skill-adder" onclick="addSkillBox()">Add skill</button>
+                            </div>
+                        </div>
+
+                        <div class="edu-wrap">
+                            <legend>Academmic Qualification</legend>
+                            <div>
+                                <!-- <div class="education">
+                                    <div class="edu-title edu">
+                                        <span>Degree Title</span>
+                                        <input type="text">
+                                    </div>
+                                    <div class="stream-title edu">
+                                        <span>Stream Name</span>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                                <div class="education">
+                                    <div class="institution edu">
+                                        <span>Institution Name</span>
+                                        <input type="text">
+                                    </div>
+                                    <div class="graduation-year edu">
+                                        <span>Graduation Year</span>
+                                        <input type="date">
+                                    </div>
+                                </div> -->
+
+                                <button id="qualiAdder" onclick="addQualification()"> Add Qualification</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="additional">
+                        <button>Work-Experience</button>
+                        <button>Projects</button>
+                        <button>Certifications</button>
+                        <button>References</button>
+                        <button>Add custom sections</button>
+                    </section>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="me">
+            <p>hello user this is me, the dev of the page.</p>
+        </div>
+    </section>
+
+    <script src="build.js"></script>
+</body>
+
+</html>

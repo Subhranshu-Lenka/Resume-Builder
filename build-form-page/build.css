@@ -1,0 +1,153 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 1rem;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 6.5rem;
+    border: 2px solid black;
+    font-size: 1.3rem;
+}
+
+.main-wrap {
+    display: flex;
+    width: 100%;
+    /* justify-content: space-between; */
+}
+
+.left,
+.right {
+    border: 2px solid orange;
+    width: 50%;
+    height: auto;
+}
+
+/* style for right side */
+
+.form {
+    padding: 1rem 1.5rem;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+#photo-btn {
+    border-radius: 10.98px;
+    font-family: Arial;
+    color: #363636;
+    font-size: large;
+    font-weight: bold;
+    padding: 3rem 1.8rem;
+    border: solid #727070 2.2px;
+}
+
+.photo {
+    /* border: 2px solid red; */
+    display: inline-block;
+}
+
+#name-row {
+    display: inline-block;
+}
+
+.general label {
+    color: rgb(80, 80, 80);
+    padding: 0.45rem 1rem;
+    display: inline-block;
+}
+
+.general input {
+    border-radius: 5px;
+    border: 1.5px solid gray;
+    width: 15rem;
+}
+
+.red {
+    color: red;
+}
+
+#temp-btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 15px;
+    border: solid 3px lightgreen;
+    color: green;
+    font-weight: bolder;
+}
+
+.summary textarea {
+    width: 100%;
+    height: 5rem;
+    resize: none;
+}
+
+/* styling for the skills on right */
+.skills {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+
+
+.skills button {
+    border-radius: 30px;
+    padding: 5px .5rem;
+    border: 2.5px solid lightgreen;
+    color: blue;
+}
+
+.sec-wrap {
+    display: flex;
+}
+
+.sec-wrap input {
+    border-radius: 5px;
+    border: 1.5px solid gray;
+    width: 8rem;
+    font-size: medium;
+    /* font-size: medium; */
+}
+
+.sec-wrap button {
+    font-size: small;
+    color: red;
+    border: 0.5px solid gray;
+    margin-left: -15px;
+}
+
+.remove-skill {
+    font-weight: bolder;
+}
+
+
+/* education styling */
+.education {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.edu {
+    display: flex;
+    width: 45%;
+    justify-content: space-between;
+}
+
+#qualiAdder {
+    border-radius: 30px;
+    padding: 5px .5rem;
+    border: 2.5px solid lightgreen;
+    color: blue;
+}
+
+.me {
+    text-align: center;
+}
