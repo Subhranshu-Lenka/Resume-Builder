@@ -32,15 +32,19 @@
                     <section class="compulsary-data">
                         <div class="summary-data">
                             <h4>SUMMARY</h4>
-                            <p>desc</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores laudantium doloribus
+                                commodi praesentium velit odit doloremque! Similique praesentium, ad error blanditiis
+                                dignissimos fugiat reprehenderit eveniet voluptatum eius, molestias neque rerum?
+                                Neque corporis nihil aut eveniet at modi, pariatur recusandae dolorem similique corrupti
+                                architecto voluptatibus?</p>
                         </div>
 
-                        <dvi class="skills-data">
+                        <div class="skills-data">
                             <h4>Skills</h4>
                             <p>skill 1</p>
                             <p>skill 1</p>
                             <p>skill 1</p>
-                        </dvi>
+                        </div>
 
                         <div class="qualification-data">
                             <h4>Academic Qualification</h4>
@@ -49,9 +53,21 @@
                                 <p> institute Name, city | Board | percentage ??/100 | date of passing</p>
                             </div>
                         </div>
+                    </section>
 
+                    <section class="skill-block">
+                    </section>
 
+                    <section class="work-exp">
+                    </section>
 
+                    <section class="academic-qual">
+                    </section>
+
+                    <section class="project-block">
+                    </section>
+
+                    <section class="certificate-block">
                     </section>
                     <section class="additional-data">
 
@@ -86,6 +102,7 @@
                 <p>How do you like that.</p>
 
             </div>
+
             <div class="right">
 
                 <div class="form">
@@ -96,34 +113,32 @@
                         </div>
 
                         <span id="name-row">
-                            <label name="name">Name <span class="red"> * </span>
-
+                            <label>Name <span class="red"> * </span>
+                                <input title="Enter your name" type="text" name="name" id="name">
                             </label>
-                            <input title="Enter your name" type="text" name="name" id="name">
 
                             <br>
-
-                            <label name="headline">Headline <span class="red"> * </span>
+                            <label>Headline <span class="red"> * </span>
                                 <input type="text" name="headline" id="headline">
                             </label>
                         </span>
                         <br>
 
-                        <label name="email">Email <span class="red"> * </span>
+                        <label>Email <span class="red"> * </span>
                             <input type="email" name="email" id="email">
                         </label>
 
-                        <label name="phone">Phone <span class="red"> * </span>
+                        <label>Phone <span class="red"> * </span>
                             <input type="number" name="phone" id="phone">
                         </label>
 
                         <br>
 
-                        <label name="city">City <span class="red"> * </span>
+                        <label>City <span class="red"> * </span>
                             <input type="text" name="city" id="city">
                         </label>
 
-                        <label name="pincode">Pin Code <span class="red"> * </span>
+                        <label>Pin Code <span class="red"> * </span>
                             <input type="number" name="pincode" id="pincode">
                         </label>
                     </section>
@@ -136,63 +151,63 @@
                     <section class="compulsary">
 
                         <div class="summary">
-                            <legend>Profile Description</legend>
+                            <legend>Profile Description<span class="red"> * </span></legend>
                             <textarea id="summary-textbox"></textarea>
                         </div>
 
                         <div class="skill-wrap">
-                            <legend>Skills</legend>
+                            <legend>Skills<span class="red"> * </span></legend>
                             <div class="skills">
                                 <!-- <div class="sec-wrap">
                                     <input type="text">
                                     <button id="first-skill" class="remove-skill">X</button>
                                 </div> -->
-                                <button id="skill-adder" onclick="addSkillBox()">Add skill</button>
+                                <button class="add-btn" id="skill-adder" onclick="addSkillBox()">Add skill</button>
                             </div>
                         </div>
 
-                        <div class="edu-wrap">
-                            <legend>Academmic Qualification</legend>
-                            <div>
-                                <!-- <div class="education">
-                                    <div class="edu-title edu">
-                                        <span>Degree Title</span>
-                                        <input type="text">
-                                    </div>
-                                    <div class="stream-title edu">
-                                        <span>Stream Name</span>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="education">
-                                    <div class="institution edu">
-                                        <span>Institution Name</span>
-                                        <input type="text">
-                                    </div>
-                                    <div class="graduation-year edu">
-                                        <span>Graduation Year</span>
-                                        <input type="date">
-                                    </div>
-                                </div> -->
 
-                                <button id="qualiAdder" onclick="addQualification()"> Add Qualification</button>
+
+                        <!-- academic qualification -->
+                        <div class="edu-wrap">
+                            <legend>Academmic Qualification<span class="red"> * </span></legend>
+                            <div class="qualifications">
                             </div>
+                            <button class="add-btn" id="qualiAdder">
+                                Add Qualification</button>
                         </div>
                     </section>
 
                     <section class="additional">
-                        <button>Work-Experience</button>
-                        <button>Projects</button>
-                        <button>Certifications</button>
-                        <button>References</button>
-                        <button>Add custom sections</button>
+                        these are optional sections
+                        <!-- work experience -->
+                        <div id="work-experience-section" class="optional-section">
+                            <legend>Work Experience</legend>
+
+                            <div id="work-experiences">
+                            </div>
+                            <button class="add-btn" id="add-work-experience">Add Experience</button>
+                        </div>
+
+                        <!-- projects -->
+                        <div id="projects-section" class="optional-section">
+                            <legend>Projects</legend>
+
+                            <div id="projects">
+                            </div>
+                            <button class="add-btn" id="add-project">Add Project</button>
+                        </div>
+
+                        <div id="certificate-section">
+                            <legend>Certifications</legend>
+                            <div id="certificates"></div>
+                            <button class="add-btn" id="add-certificate">Add Certification</button>
+                        </div>
                     </section>
 
+                    <!-- <center><button class="add-btn" id="main-save">Make Changes</button></center> -->
+
                 </div>
-
-
-
-
             </div>
         </div>
     </section>

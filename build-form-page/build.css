@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
@@ -34,7 +35,7 @@ body {
 
 .form {
     padding: 1rem 1.5rem;
-    font-family: sans-serif;
+
     letter-spacing: 0.5px;
     font-size: 0.9rem;
 }
@@ -74,14 +75,6 @@ body {
     color: red;
 }
 
-#temp-btn {
-    padding: 0.7rem 1.5rem;
-    border-radius: 15px;
-    border: solid 3px lightgreen;
-    color: green;
-    font-weight: bolder;
-}
-
 .summary textarea {
     width: 100%;
     height: 5rem;
@@ -95,13 +88,19 @@ body {
     flex-wrap: wrap;
 }
 
+#skill-adder {
+    margin-top: 0;
+}
 
-
-.skills button {
+/* basic add button styling */
+.add-btn {
     border-radius: 30px;
     padding: 5px .5rem;
-    border: 2.5px solid lightgreen;
-    color: blue;
+    border: 2.5px solid gray;
+    color: #363636;
+    font-weight: 500;
+    margin-top: 4px;
+    margin-bottom: 7px;
 }
 
 .sec-wrap {
@@ -113,17 +112,24 @@ body {
     border: 1.5px solid gray;
     width: 8rem;
     font-size: medium;
-    /* font-size: medium; */
+    text-align: center;
 }
 
-.sec-wrap button {
+.skill-preview {
+    font-size: 16px;
+    padding: 5px 8px;
+    margin-left: 1.5rem;
+    border: 2px solid #212121;
+    border-radius: 8px;
+}
+
+.remove-skill {
+    border-radius: 30px;
+    padding: 5px .5rem;
     font-size: small;
     color: red;
     border: 0.5px solid gray;
     margin-left: -15px;
-}
-
-.remove-skill {
     font-weight: bolder;
 }
 
@@ -141,13 +147,50 @@ body {
     justify-content: space-between;
 }
 
-#qualiAdder {
-    border-radius: 30px;
-    padding: 5px .5rem;
-    border: 2.5px solid lightgreen;
-    color: blue;
+legend {
+    font-weight: 550;
+    font-size: 1rem;
+    padding: 5px 0;
+
 }
 
 .me {
     text-align: center;
+}
+
+
+
+/* this is the stylingg for the right side preview */
+.preview {
+    scale: 0.85;
+    border: 2px solid black;
+    /* padding: 25px; */
+    line-height: 24px;
+}
+
+.general-data {
+    background-color: #363636;
+    color: #fff;
+    padding: 10px;
+}
+
+.general-data h1 {
+    font-size: 24px;
+}
+
+.compulsary-data {
+    padding: 10px;
+}
+
+.compulsary-data h4 {
+    font-size: large;
+    margin-top: 10px;
+}
+
+.work-experience p,
+.qualifications p,
+.project p,
+.certificate p {
+    display: flex;
+    justify-content: space-between;
 }

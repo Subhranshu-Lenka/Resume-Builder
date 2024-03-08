@@ -49,7 +49,7 @@ function validateData() {
 function makeChanges() {
     nameField.innerHTML = name.value;
     headlineField.innerHTML = headline.value;
-    detailsField.innerHTML = `Ph: ${phone.value} <br> Email: ${email.value} <br> ${city.value}, ${pincode.value}`
+    detailsField.innerHTML = `Ph: ${phone.value} &nbsp;&nbsp;|&nbsp;&nbsp; Email: ${email.value} <br> ${city.value}, ${pincode.value}`
 }
 
 function showError(node) {
@@ -65,6 +65,7 @@ function showError(node) {
     console.log(node);
 }
 
+
 // skill adder Btn function
 const skillBtn = document.getElementById("skill-adder");
 function addSkillBox() {
@@ -77,72 +78,495 @@ function addSkillBox() {
     newXbtn.textContent = "X";
     newXbtn.classList.add("remove-skill");
 
-    // removing a skill
-    newXbtn.addEventListener("click", (event) => {
-        console.log("Removing a skill");
-        event.target.parentNode.remove();
-    })
-
     newDiv.classList.add("sec-wrap");
+    newInput.type = "text";
     newDiv.appendChild(newInput);
     newDiv.appendChild(newXbtn);
 
     skillBtn.parentNode.insertBefore(newDiv, skillBtn);
+
+    const preview = createSkillPreview(newInput);
+
+    // removing a skill
+    newXbtn.addEventListener("click", (event) => {
+        console.log("Removing a skill");
+        event.target.parentNode.remove();
+        preview.remove();
+    })
 }
+
+const skillBlock = document.querySelector(".skill-block");
+function createSkillPreview(inputNode) {
+    const skillSpan = document.createElement("span");
+    skillSpan.classList.add("skill-preview");
+
+    inputNode.addEventListener("input", () => {
+        if (inputNode.value === "") {
+            skillSpan.style.display = "none";
+        }
+        else {
+            skillSpan.style.display = "inline";
+            skillSpan.innerText = `${inputNode.value}`;
+        }
+
+    })
+
+    skillBlock.appendChild(skillSpan);
+    return skillSpan;
+}
+
+
 
 
 // adding qualification
 const qualiAddBtn = document.getElementById("qualiAdder");
-function addQualification() {
-    console.log("in add qualification block");
-    const newDiv = buildEdu(document.createElement("div"));
-    qualiAddBtn.parentNode.insertBefore(newDiv, qualiAddBtn);
-}
+const qualificationsDiv = document.querySelector(".qualifications");
+qualiAddBtn.addEventListener("click", addQualification);
 
 // this function builds all the internal strucure of the new qualificatioin div 
-function buildEdu(node) {
-    const div1 = document.createElement("div");
-    const div2 = document.createElement("div");
+function addQualification() {
 
-    let eduTitleDiv = document.createElement("div");
-    eduTitleDiv = buildIn(eduTitleDiv);
-    eduTitleDiv.firstChild.textContent = "Degree Title";
+    const field = document.createElement("fieldset");
+    field.classList.add("edu-field");
 
-    let streamDiv = document.createElement("div");
-    streamDiv = buildIn(streamDiv);
-    streamDiv.firstChild.textContent = "Stream Name";
+    const crossBtn = document.createElement("legend");
+    crossBtn.textContent = "X";
+    crossBtn.style.textAlign = "right";
+    crossBtn.style.cursor = 'pointer';
+    field.appendChild(crossBtn);
 
-    let institutionDiv = document.createElement("div");
-    institutionDiv = buildIn(institutionDiv);
-    institutionDiv.firstChild.textContent = "Institution Name";
+    const degtTitle = document.createElement("p");
+    degtTitle.textContent = "Degree Title";
+    const titleInput = document.createElement("input");
+    titleInput.type = "text";
+    degtTitle.appendChild(titleInput);
 
-    let graduationYearDiv = document.createElement("div");
-    graduationYearDiv = buildIn(graduationYearDiv);
-    graduationYearDiv.firstChild.textContent = "Graduation Year";
+    const streamName = document.createElement("p");
+    streamName.textContent = "Stream Name";
+    const streamInput = document.createElement("input");
+    streamInput.type = "text";
+    streamName.appendChild(streamInput);
 
-    div1.classList.add("education");
-    div2.classList.add("education");
+    const instituteName = document.createElement("p");
+    instituteName.textContent = "Institution Name";
+    const instituteInput = document.createElement("input");
+    instituteInput.type = "text";
+    instituteName.appendChild(instituteInput);
 
-    div1.appendChild(eduTitleDiv);
-    div1.appendChild(streamDiv);
+    const graduationYear = document.createElement("p");
+    graduationYear.textContent = "Graduation Year";
+    const gradYearInput = document.createElement("input");
+    gradYearInput.type = "month";
+    graduationYear.appendChild(gradYearInput);
 
-    div2.appendChild(institutionDiv);
-    div2.appendChild(graduationYearDiv);
+    field.appendChild(degtTitle)
+    field.appendChild(streamName)
+    field.appendChild(instituteName)
+    field.appendChild(graduationYear)
 
-    // the div that needs to be returned
-    node.appendChild(div1);
-    node.appendChild(div2);
+    qualificationsDiv.appendChild(field);
 
-    return node;
+    const preview = createQualificationPreview(field);
+
+    crossBtn.addEventListener("click", () => {
+        console.log("education remover button")
+        field.remove();
+        preview.remove();
+    })
 }
 
-// this function just build the label (span)  and input for each div and appends them to div
-function buildIn(node) {
-    node.classList.add("edu");
-    let span = document.createElement("span");
-    let input = document.createElement("input");
-    node.appendChild(span);
-    node.appendChild(input);
+const qualSection = document.querySelector(".academic-qual")
+function createQualificationPreview(node) {
+    const inputs = node.querySelectorAll("input");
 
-    return node;
+    console.log("in the create qualification preview");
+
+    const previewDiv = document.createElement("div");
+
+    const courseTitle = document.createElement("p");
+    const details = document.createElement("p");
+
+    const instituteName = document.createElement("span");
+    const streamName = document.createElement("span");
+    const gradYear = document.createElement("span");
+    details.appendChild(instituteName);
+    details.appendChild(streamName);
+    details.appendChild(gradYear);
+
+
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('input', () => {
+            switch (i) {
+                case 0:
+                    courseTitle.innerText = inputs[i].value;
+                    break;
+                case 1:
+                    streamName.innerText = `|    ${inputs[i].value}     `;
+                    break;
+                case 2:
+                    instituteName.innerText = `${inputs[i].value}`;
+                    break;
+                case 3:
+                    gradYear.innerText = `|     Graduation Year:  ${inputs[i].value}`;
+            }
+        });
+    }
+
+    previewDiv.appendChild(courseTitle)
+    previewDiv.appendChild(details)
+
+    qualSection.appendChild(previewDiv)
+
+    console.log("ending of the preview");
+
+    return previewDiv;
+
 }
+
+
+// ai function - work experience
+const addWorkExperienceButton = document.getElementById('add-work-experience');
+const workExperiencesDiv = document.getElementById('work-experiences');
+
+addWorkExperienceButton.addEventListener('click', () => {
+    // Create a new work experience element
+    const experience = document.createElement('fieldset');
+    experience.classList.add('work-experience');
+
+    // Add input fields for details
+    const companyLabel = document.createElement('p');
+    companyLabel.textContent = 'Company Name:';
+    const companyInput = document.createElement('input');
+    companyInput.type = 'text';
+    companyInput.name = 'company';
+    companyLabel.appendChild(companyInput);
+
+    const positionLabel = document.createElement('p');
+    positionLabel.textContent = 'Position:';
+    const positionInput = document.createElement('input');
+    positionInput.type = 'text';
+    positionInput.name = 'position';
+    positionLabel.appendChild(positionInput);
+
+    const startDateLabel = document.createElement('p');
+    startDateLabel.textContent = 'Start Date:';
+    const startDateInput = document.createElement('input');
+    startDateInput.type = 'date';
+    startDateInput.name = 'startDate';
+    startDateLabel.appendChild(startDateInput);
+
+    const endDateLabel = document.createElement('p');
+    endDateLabel.textContent = 'End Date:';
+    const endDateInput = document.createElement('input');
+    endDateInput.type = 'date';
+    endDateInput.name = 'endDate';
+    endDateLabel.appendChild(endDateInput);
+
+    const descriptionLabel = document.createElement('p');
+    descriptionLabel.textContent = 'Description:';
+    const descriptionInput = document.createElement('textarea');
+    descriptionInput.name = 'description';
+    descriptionLabel.appendChild(descriptionInput);
+
+    // Add a button to remove the experience
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove Experience';
+
+    // Append input fields and button to the experience element
+    experience.appendChild(companyLabel);
+    experience.appendChild(positionLabel);
+    experience.appendChild(startDateLabel);
+    experience.appendChild(endDateLabel);
+    experience.appendChild(descriptionLabel);
+    experience.appendChild(removeButton);
+
+    // Append the experience element to the work experiences div
+    workExperiencesDiv.appendChild(experience);
+
+    const preview = createWorkPreview(experience);
+
+    removeButton.addEventListener('click', () => {
+        experience.remove();
+        preview.remove();
+    });
+});
+
+const workSection = document.querySelector(".work-exp")
+function createWorkPreview(node) {
+    const inputs = node.querySelectorAll("input");
+
+    console.log("in the create work preview section!!")
+
+    const previewDiv = document.createElement("div");
+
+    const companyName = document.createElement("p");
+    const workPosition = document.createElement('p');
+    const duration = document.createElement('p');
+    const companyDesc = document.createElement("p");
+    const startspan = document.createElement("span");
+    const endspan = document.createElement("span");
+    duration.appendChild(startspan);
+    duration.appendChild(endspan);
+
+
+    // adding event listener to each input
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('input', () => {
+            switch (i) {
+                case 0:
+                    companyName.innerText = inputs[i].value;
+                    break;
+                case 1:
+                    workPosition.innerText = inputs[i].value;
+                    break;
+                case 2:
+                    startspan.innerText = `Start date: ${inputs[i].value}`; // Update only start date
+                    break;
+                case 3:
+                    endspan.innerText = `- End Date: ${inputs[i].value}`; // Update end date
+                    break;
+            }
+        });
+    }
+
+    node.querySelector("textarea").addEventListener("input", () => {
+        companyDesc.innerText = node.querySelector("textarea").value;
+    })
+
+    previewDiv.appendChild(companyName);
+    previewDiv.appendChild(workPosition);
+    previewDiv.appendChild(duration);
+    previewDiv.appendChild(companyDesc);
+
+    workSection.appendChild(previewDiv)
+
+    console.log("end of create work preview !!")
+
+    return previewDiv;
+}
+
+
+
+// project
+const addProjectButton = document.getElementById('add-project');
+const projectsDiv = document.getElementById('projects');
+
+addProjectButton.addEventListener('click', () => {
+
+    const project = document.createElement('div');
+    project.classList.add('project');
+
+    // Add input fields for details
+    const nameLabel = document.createElement('p');
+    nameLabel.textContent = 'Project Name:';
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameLabel.appendChild(nameInput);
+
+    const linkLabel = document.createElement('p');
+    linkLabel.textContent = 'Project Link:';
+    const linkInput = document.createElement('input');
+    linkInput.type = 'text';
+    linkLabel.appendChild(linkInput);
+
+    const descriptionLabel = document.createElement('p');
+    descriptionLabel.textContent = 'Description:';
+    const descriptionInput = document.createElement('textarea');
+    descriptionLabel.appendChild(descriptionInput);
+
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove Project';
+
+
+    // Append input fields and button to the project element
+    project.appendChild(nameLabel);
+    project.appendChild(linkLabel);
+    project.appendChild(descriptionLabel);
+    project.appendChild(removeButton);
+
+    // Append the project element to the projects div
+    projectsDiv.appendChild(project);
+
+    const preview = createProjectPreview(project)
+
+    removeButton.addEventListener('click', () => {
+        project.remove();
+        preview.remove();
+    });
+
+});
+
+const projectBlock = document.querySelector(".project-block");
+function createProjectPreview(node) {
+    const inputs = node.querySelectorAll("input");
+    const previewDiv = document.createElement("div");
+
+    const projName = document.createElement("p");
+    const projLink = document.createElement("a");
+    const projDesc = document.createElement("p");
+
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('input', () => {
+            switch (i) {
+                case 0:
+                    projName.innerText = inputs[i].value;
+                    break;
+                case 1:
+                    projLink.innerText = `${inputs[i].value}`;
+                    projLink.href = `${inputs[i].value}`
+                    break;
+            }
+        });
+    }
+
+    node.querySelector("textarea").addEventListener("input", () => {
+        projDesc.innerText = node.querySelector("textarea").value;
+    })
+
+    previewDiv.appendChild(projName)
+    previewDiv.appendChild(projLink)
+    previewDiv.appendChild(projDesc)
+
+    projectBlock.appendChild(previewDiv)
+    return previewDiv;
+}
+
+
+
+// certificate section
+const addCertificateBtn = document.getElementById("add-certificate");
+const certificatesDiv = document.getElementById("certificates");
+
+addCertificateBtn.addEventListener("click", () => {
+
+    const certificate = document.createElement("div");
+    certificate.classList.add("certificate")
+
+    // input and fields
+    const nameLabel = document.createElement("p");
+    nameLabel.textContent = "Certification Name";
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.name = 'certificateName';
+
+    nameLabel.appendChild(nameInput);
+
+    const issuingOrgLabel = document.createElement('p');
+    issuingOrgLabel.textContent = 'Issuing Organization';
+    const issuingOrgInput = document.createElement('input');
+    issuingOrgInput.type = 'text';
+    issuingOrgInput.name = 'issuingOrg';
+
+    issuingOrgLabel.appendChild(issuingOrgInput);
+
+    const certificateLinkLabel = document.createElement('p');
+    certificateLinkLabel.textContent = 'Confirmation Link';
+    const certificateLinkInput = document.createElement('input');
+    certificateLinkInput.type = 'text';
+    certificateLinkInput.name = 'certificateLink';
+
+    certificateLinkLabel.appendChild(certificateLinkInput);
+
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove certificate';
+
+
+    certificate.appendChild(nameLabel)
+    certificate.appendChild(issuingOrgLabel)
+    certificate.appendChild(certificateLinkLabel)
+    certificate.appendChild(removeButton);
+
+    certificatesDiv.appendChild(certificate);
+
+    const preview = createCertificatePreview(certificate);
+
+    removeButton.addEventListener('click', () => {
+        certificate.remove();
+        preview.remove();
+    });
+})
+
+const certificateBlock = document.querySelector(".certificate-block");
+
+function createCertificatePreview(node) {
+    const inputs = node.querySelectorAll("input");
+    const previewDiv = document.createElement("div");
+
+    const certiName = document.createElement("p");
+    const certiIssuer = document.createElement("p");
+    const certiLink = document.createElement("a");
+
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('input', () => {
+            switch (i) {
+                case 0:
+                    certiName.innerText = inputs[i].value;
+                    break;
+                case 1:
+                    certiIssuer.innerText = inputs[i].value;
+                    break;
+                case 2:
+                    certiLink.innerText = `${inputs[i].value}`;
+                    certiLink.href = `${inputs[i].value}`
+                    break;
+            }
+        });
+    }
+
+    previewDiv.appendChild(certiName)
+    previewDiv.appendChild(certiIssuer)
+    previewDiv.appendChild(certiLink)
+
+    certificateBlock.appendChild(previewDiv)
+    return previewDiv;
+}
+// let skillArr = [];
+// let academicArr = [];
+// let workArr = [];
+// let projectArr = [];
+// let certificateArr = [];
+
+
+// // main save button
+// const mainSaveBtn = document.getElementById("main-save");
+// mainSaveBtn.addEventListener("click", function () {
+//     const skillInputs = document.querySelectorAll(".sec-wrap input");
+
+//     for (const input of skillInputs) {
+//         const trimmedValue = input.value.trim(); // Trim leading/trailing whitespace
+//         if (trimmedValue) { // Check if the trimmed value is not empty
+//             skillArr.push(trimmedValue);
+//         }
+//     }
+//     console.log(skillArr)
+
+//     const eduField = document.querySelectorAll(".edu-field");
+
+//     for (field of eduField) {
+//         const dataObject = {};
+//         // Loop through all child divs of the fieldset
+//         for (const div of field.children) {
+//             if (div.tagName.toLowerCase() === 'div') { // Ensure it's a div element (optional)
+//                 // Loop through child divs within the current div
+//                 for (const childDiv of div.children) {
+//                     if (childDiv.tagName.toLowerCase() === 'div') { // Ensure it's a div element (optional)
+//                         // Get the span and input elements
+//                         const span = childDiv.querySelector('span');
+//                         const input = childDiv.querySelector('input');
+
+//                         if (span && input) { // Check if both elements exist
+//                             const key = span.textContent.trim(); // Get and trim the span text
+//                             const value = input.value; // Get the input value
+
+//                             dataObject[key] = value; // Store data in the object
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+
+//         academicArr.push(dataObject);
+//         // console.log(dataObject); // Output the resulting object
+//     }
+//     console.log(academicArr);
+// })
