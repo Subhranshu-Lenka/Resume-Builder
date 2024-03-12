@@ -20,84 +20,49 @@
             <div class="left">
 
                 <div class="preview">
-                    <section class="general-data exp">
+                    <section class="resume-head">
                         <h1 class="name-field">John Doe</h1>
                         <p class="headline-field">Operation Manager</p>
-                        <p class="details-field">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem cum saepe
-                            quibusdam
-                            itaque
-                            perferendis totam, .</p>
+                        <p class="details-field">
+                            <span id="email-field"></span>
+                            <span id="phone-field"></span>
+                            <span id="linkedin-field"></span>
+                            <span id="city-field"></span>
+                            <span id="pincode-field"></span>
+                        </p>
                     </section>
 
-                    <section class="compulsary-data">
-                        <div class="summary-data">
+                    <div class="resume-body">
+                        <section class="summary-block">
                             <h4>SUMMARY</h4>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores laudantium doloribus
                                 commodi praesentium velit odit doloremque! Similique praesentium, ad error blanditiis
-                                dignissimos fugiat reprehenderit eveniet voluptatum eius, molestias neque rerum?
-                                Neque corporis nihil aut eveniet at modi, pariatur recusandae dolorem similique corrupti
-                                architecto voluptatibus?</p>
-                        </div>
+                                dignissimos fugiat reprehenderit </p>
+                        </section>
 
-                        <div class="skills-data">
+                        <div>
                             <h4>Skills</h4>
-                            <p>skill 1</p>
-                            <p>skill 1</p>
-                            <p>skill 1</p>
+                            <section class="skill-block">
+                            </section>
                         </div>
 
-                        <div class="qualification-data">
-                            <h4>Academic Qualification</h4>
-                            <div class="course-no">
-                                <h5>Course Title</h5>
-                                <p> institute Name, city | Board | percentage ??/100 | date of passing</p>
-                            </div>
-                        </div>
-                    </section>
+                        <section class="academic-block">
+                            <h4>Academic Qualifications</h4>
+                        </section>
 
-                    <section class="skill-block">
-                    </section>
+                        <section class="work-exp additional">
+                            <h4>Work Experience</h4>
+                        </section>
 
-                    <section class="work-exp">
-                    </section>
+                        <section class="project-block additional">
+                            <h4>Projects</h4>
+                        </section>
 
-                    <section class="academic-qual">
-                    </section>
+                        <section class="certificate-block additional">
+                            <h4>Certification</h4>
+                        </section>
+                    </div>
 
-                    <section class="project-block">
-                    </section>
-
-                    <section class="certificate-block">
-                    </section>
-                    <section class="additional-data">
-
-                        <div class="experience exp">
-                            <h4>EXPERIENCE</h4>
-                            <div class="wrap-company">
-                                <h5>Title</h5>
-                                <p>company name</p>
-                                <ul>
-                                    <li>keypoint 1</li>
-                                    <li>keypoint 2</li>
-                                    <li>keypoint 3</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="project exp">
-                            <h4>PROJECT</h4>
-                            <h5>Title</h5>
-                            <p>desc</p>
-                        </div>
-                    </section>
-                    <section class="achievement exp">
-                        <h4>ACHIEVEMENT</h4>
-                        <h5>Title</h5>
-                        <p>desc</p>
-                    </section>
-                    <section class="language exp">
-                        <h4>LANGUAGE</h4>
-                        <p>lang name <span>fluency</span></p>
-                    </section>
                 </div>
                 <p>How do you like that.</p>
 
@@ -106,53 +71,45 @@
             <div class="right">
 
                 <div class="form">
+                    <!-- general data bc -->
                     <section class="general">
-                        <div class="photo">
-                            <button id="photo-btn" onclick="document.getElementById('getFile').click()">Photo</button>
-                            <input id="getFile" type="file" accept=".png, .jpg, .jpeg" style="display: none;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="photo">
+                                <button id="photo-btn"
+                                    onclick="document.getElementById('getFile').click()">Photo</button>
+                                <input id="getFile" type="file" accept=".png, .jpg, .jpeg" style="display: none;">
+                            </div>
+
+                            <div style="flex-grow: 1;">
+                                <p>
+                                    Name <span class="red"> * </span>
+                                    <input title="Enter your name" type="text">
+                                </p>
+                                <p>
+                                    Email <span class="red"> * </span>
+                                    <input type="email" title="Enter your email">
+                                </p>
+                            </div>
                         </div>
 
-                        <span id="name-row">
-                            <label>Name <span class="red"> * </span>
-                                <input title="Enter your name" type="text" name="name" id="name">
-                            </label>
-
-                            <br>
-                            <label>Headline <span class="red"> * </span>
-                                <input type="text" name="headline" id="headline">
-                            </label>
-                        </span>
-                        <br>
-
-                        <label>Email <span class="red"> * </span>
-                            <input type="email" name="email" id="email">
-                        </label>
-
-                        <label>Phone <span class="red"> * </span>
-                            <input type="number" name="phone" id="phone">
-                        </label>
-
-                        <br>
-
-                        <label>City <span class="red"> * </span>
-                            <input type="text" name="city" id="city">
-                        </label>
-
-                        <label>Pin Code <span class="red"> * </span>
-                            <input type="number" name="pincode" id="pincode">
-                        </label>
+                        <div>
+                            <p>Headline <br> <input type="text" title="Enter text for Headline"></p>
+                            <p>Phone<br> <input type="number" title="Enter your Phone Number"></p>
+                            <p>LinkedIn<br> <input type="text" title="Enter your LinkedIn"></p>
+                            <p style="display: flex; justify-content:space-between;">
+                                <span>City <br><input type="text" title="Enter your city"></span>
+                                <span>Pincode <br><input type="text" title="Enter your pincode"></span>
+                            </p>
+                        </div>
                     </section>
 
-                    <center><button id="general-save">Save</button>
-                        <br>
-                        <p id="mandatory-text">Note : "<span class="red"> * </span>" mandatory field. </p>
-                    </center>
                     <hr>
                     <section class="compulsary">
 
                         <div class="summary">
                             <legend>Profile Description<span class="red"> * </span></legend>
-                            <textarea id="summary-textbox"></textarea>
+                            <textarea id="summary-textbox"
+                                placeholder="   Add a short description or summary of yourself."></textarea>
                         </div>
 
                         <div class="skill-wrap">
@@ -178,38 +135,38 @@
                         </div>
                     </section>
 
-                    <section class="additional">
-                        these are optional sections
-                        <!-- work experience -->
-                        <div id="work-experience-section" class="optional-section">
-                            <legend>Work Experience</legend>
+                    <section></section>
+                    these are optional sections
+                    <!-- work experience -->
+                    <div id="work-experience-section" class="optional-section">
+                        <legend>Work Experience</legend>
 
-                            <div id="work-experiences">
-                            </div>
-                            <button class="add-btn" id="add-work-experience">Add Experience</button>
+                        <div id="work-experiences">
                         </div>
+                        <button class="add-btn" id="add-work-experience">Add Experience</button>
+                    </div>
 
-                        <!-- projects -->
-                        <div id="projects-section" class="optional-section">
-                            <legend>Projects</legend>
+                    <!-- projects -->
+                    <div id="projects-section" class="optional-section">
+                        <legend>Projects</legend>
 
-                            <div id="projects">
-                            </div>
-                            <button class="add-btn" id="add-project">Add Project</button>
+                        <div id="projects">
                         </div>
+                        <button class="add-btn" id="add-project">Add Project</button>
+                    </div>
 
-                        <div id="certificate-section">
-                            <legend>Certifications</legend>
-                            <div id="certificates"></div>
-                            <button class="add-btn" id="add-certificate">Add Certification</button>
-                        </div>
-                    </section>
+                    <div id="certificate-section">
+                        <legend>Certifications</legend>
+                        <div id="certificates"></div>
+                        <button class="add-btn" id="add-certificate">Add Certification</button>
+                    </div>
+    </section>
 
-                    <!-- <center><button class="add-btn" id="main-save">Make Changes</button></center> -->
+    <!-- <center><button class="add-btn" id="main-save">Make Changes</button></center> -->
 
-                </div>
-            </div>
-        </div>
+    </div>
+    </div>
+    </div>
     </section>
 
     <section class="footer">

@@ -1,69 +1,49 @@
-
-
-// general section data 
-const name = document.getElementById("name");
-const email = document.getElementById("email");
-const headline = document.getElementById("headline");
-const phone = document.getElementById("phone");
-const city = document.getElementById("city");
-const pincode = document.getElementById("pincode");
-
-
 const nameField = document.querySelector(".name-field");
 const headlineField = document.querySelector(".headline-field");
 const detailsField = document.querySelector(".details-field");
 
-const generalSaveBtn = document.getElementById("general-save");
-generalSaveBtn.addEventListener("click", function () {
-    validateData();
-});
+const emailSpan = document.getElementById("email-field");
+const phoneSpan = document.getElementById("phone-field");
+const linkedinSpan = document.getElementById("linkedin-field");
+const citySpan = document.getElementById("city-field");
+const pincodeSpan = document.getElementById("pincode-field");
 
-function validateData() {
-    let token = true;
-    if (name.value === "") {
-        console.log("name field is mandatory");
-        showError(name);
-        token = false;
-    }
-    if (headline.value === "") {
-        console.log("headline field is mandatory");
-        showError(headline);
-        token = false;
-    }
-    if (email.value === "") {
-        console.log("email field is mandatory");
-        showError(email);
-        token = false;
-    }
-    if (phone.value === "") {
-        console.log("phone field is mandatory");
-        showError(phone);
-        token = false;
-    }
 
-    if (token) {
-        makeChanges();
-    }
+const generalInputs = document.querySelectorAll(".general input");
+for (let i = 1; i < generalInputs.length; i++) {
+    generalInputs[i].addEventListener('input', () => {
+        switch (i) {
+            case 1:
+                nameField.innerText = generalInputs[i].value;
+                break;
+            case 2:
+                emailSpan.innerText = generalInputs[i].value;
+                break;
+            case 3:
+                headlineField.innerText = `${generalInputs[i].value}`;
+                break;
+            case 4:
+                phoneSpan.innerText = `   ${generalInputs[i].value}`;
+                break;
+            case 5:
+                linkedinSpan.innerText = `   ${generalInputs[i].value}`;
+                break;
+            case 6:
+                citySpan.innerText = `   ${generalInputs[i].value}`;
+                break;
+            case 7:
+                pincodeSpan.innerText = `   ${generalInputs[i].value}`;
+                break;
+        }
+    });
 }
 
-function makeChanges() {
-    nameField.innerHTML = name.value;
-    headlineField.innerHTML = headline.value;
-    detailsField.innerHTML = `Ph: ${phone.value} &nbsp;&nbsp;|&nbsp;&nbsp; Email: ${email.value} <br> ${city.value}, ${pincode.value}`
-}
-
-function showError(node) {
-
-    const errMessage = document.createElement("SPAN");
-
-    errMessage.textContent = "This field is required.";
-    errMessage.style.color = "red"; // Add some basic styles
-    errMessage.style.fontSize = "12px";
-    errMessage.style.display = "block"; // Ensure it's visible
-
-    node.parentNode.insertBefore(errMessage, node.nextSibling)
-    console.log(node);
-}
+// profile description
+const summaryTextarea = document.querySelector("#summary-textbox");
+summaryTextarea.addEventListener("input", () => {
+    const summaryPara = document.querySelector(".summary-block p");
+    summaryPara.innerText = summaryTextarea.value;
+})
 
 
 // skill adder Btn function
@@ -175,7 +155,7 @@ function addQualification() {
     })
 }
 
-const qualSection = document.querySelector(".academic-qual")
+const qualSection = document.querySelector(".academic-block")
 function createQualificationPreview(node) {
     const inputs = node.querySelectorAll("input");
 
@@ -227,11 +207,13 @@ function createQualificationPreview(node) {
 // ai function - work experience
 const addWorkExperienceButton = document.getElementById('add-work-experience');
 const workExperiencesDiv = document.getElementById('work-experiences');
-
+let workCounter = 0;
 addWorkExperienceButton.addEventListener('click', () => {
     // Create a new work experience element
     const experience = document.createElement('fieldset');
     experience.classList.add('work-experience');
+
+    workCounter++;
 
     // Add input fields for details
     const companyLabel = document.createElement('p');
@@ -286,13 +268,19 @@ addWorkExperienceButton.addEventListener('click', () => {
     const preview = createWorkPreview(experience);
 
     removeButton.addEventListener('click', () => {
+        workCounter--;
         experience.remove();
         preview.remove();
+        if (workCounter === 0) {
+            workSection.classList.add("additional");
+        }
     });
 });
 
-const workSection = document.querySelector(".work-exp")
+const workSection = document.querySelector(".work-exp");
 function createWorkPreview(node) {
+    workSection.classList.remove("additional");
+
     const inputs = node.querySelectorAll("input");
 
     console.log("in the create work preview section!!")
@@ -350,11 +338,13 @@ function createWorkPreview(node) {
 // project
 const addProjectButton = document.getElementById('add-project');
 const projectsDiv = document.getElementById('projects');
+let projectCounter = 0;
 
 addProjectButton.addEventListener('click', () => {
 
     const project = document.createElement('div');
     project.classList.add('project');
+    projectCounter++;
 
     // Add input fields for details
     const nameLabel = document.createElement('p');
@@ -390,14 +380,19 @@ addProjectButton.addEventListener('click', () => {
     const preview = createProjectPreview(project)
 
     removeButton.addEventListener('click', () => {
+        projectCounter--;
         project.remove();
         preview.remove();
+        if (projectCounter === 0) {
+            projectBlock.classList.add("additional");
+        }
     });
 
 });
 
 const projectBlock = document.querySelector(".project-block");
 function createProjectPreview(node) {
+    projectBlock.classList.remove("additional");
     const inputs = node.querySelectorAll("input");
     const previewDiv = document.createElement("div");
 
@@ -436,11 +431,13 @@ function createProjectPreview(node) {
 // certificate section
 const addCertificateBtn = document.getElementById("add-certificate");
 const certificatesDiv = document.getElementById("certificates");
+let certificateCounter = 0;
 
 addCertificateBtn.addEventListener("click", () => {
 
     const certificate = document.createElement("div");
     certificate.classList.add("certificate")
+    certificateCounter++;
 
     // input and fields
     const nameLabel = document.createElement("p");
@@ -481,14 +478,20 @@ addCertificateBtn.addEventListener("click", () => {
     const preview = createCertificatePreview(certificate);
 
     removeButton.addEventListener('click', () => {
+        certificateCounter--;
         certificate.remove();
         preview.remove();
+
+        if (certificateCounter === 0) {
+            certificateBlock.classList.add("additional");
+        }
     });
 })
 
 const certificateBlock = document.querySelector(".certificate-block");
 
 function createCertificatePreview(node) {
+    certificateBlock.classList.remove("additional")
     const inputs = node.querySelectorAll("input");
     const previewDiv = document.createElement("div");
 

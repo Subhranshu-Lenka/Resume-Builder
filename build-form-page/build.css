@@ -29,17 +29,18 @@ body {
     border: 2px solid orange;
     width: 50%;
     height: auto;
+    /* background-color: #ddd; */
 }
 
 /* style for right side */
 
 .form {
     padding: 1rem 1.5rem;
-
     letter-spacing: 0.5px;
     font-size: 0.9rem;
 }
 
+/* general data stuling */
 #photo-btn {
     border-radius: 10.98px;
     font-family: Arial;
@@ -50,25 +51,32 @@ body {
     border: solid #727070 2.2px;
 }
 
-.photo {
-    /* border: 2px solid red; */
-    display: inline-block;
-}
-
-#name-row {
-    display: inline-block;
-}
-
-.general label {
-    color: rgb(80, 80, 80);
-    padding: 0.45rem 1rem;
-    display: inline-block;
+.general {
+    padding: 1.2rem;
 }
 
 .general input {
     border-radius: 5px;
-    border: 1.5px solid gray;
-    width: 15rem;
+    border: 1px solid gray;
+    width: 100%;
+    background-color: #f4f0f0;
+    padding: 5px;
+    letter-spacing: 1.5px;
+}
+
+.general input:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.general div>p>span {
+    display: inline-block;
+    width: 45%;
+}
+
+.general p {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .red {
@@ -79,6 +87,8 @@ body {
     width: 100%;
     height: 5rem;
     resize: none;
+    padding: 5px 10px;
+    letter-spacing: 1.2px;
 }
 
 /* styling for the skills on right */
@@ -133,6 +143,12 @@ body {
     font-weight: bolder;
 }
 
+.skill-block {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
 
 /* education styling */
 .education {
@@ -160,6 +176,7 @@ legend {
 
 
 
+
 /* this is the stylingg for the right side preview */
 .preview {
     scale: 0.85;
@@ -168,23 +185,14 @@ legend {
     line-height: 24px;
 }
 
-.general-data {
+.resume-head {
     background-color: #363636;
     color: #fff;
-    padding: 10px;
+    padding: 20px;
 }
 
-.general-data h1 {
-    font-size: 24px;
-}
-
-.compulsary-data {
-    padding: 10px;
-}
-
-.compulsary-data h4 {
-    font-size: large;
-    margin-top: 10px;
+.resume-body {
+    padding: 25px 20px;
 }
 
 .work-experience p,
@@ -193,4 +201,22 @@ legend {
 .certificate p {
     display: flex;
     justify-content: space-between;
+    padding: 0 15px;
+}
+
+.work-experience input,
+.qualifications input,
+.project input,
+.certificate input,
+.work-experience textarea,
+.project textarea {
+    width: 60%;
+    padding: 5px;
+    letter-spacing: 1px;
+    resize: none;
+}
+
+
+.additional {
+    display: none;
 }
