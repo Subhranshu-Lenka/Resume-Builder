@@ -5,6 +5,7 @@
 }
 
 body {
+    padding: 0 10px;
     background: linear-gradient(135deg, #1B262C, #5C5470);
     font-family: sans-serif;
     color: whitesmoke;
@@ -84,6 +85,10 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.temp-wrap p {
+    margin-top: -20px;
 }
 
 .temp {
