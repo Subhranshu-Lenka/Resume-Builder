@@ -73,6 +73,8 @@ function addSkillBox() {
         event.target.parentNode.remove();
         preview.remove();
     })
+
+    newInput.focus();
 }
 
 const skillBlock = document.querySelector(".skill-block");
@@ -95,9 +97,6 @@ function createSkillPreview(inputNode) {
     return skillSpan;
 }
 
-
-
-
 // adding qualification
 const qualiAddBtn = document.getElementById("qualiAdder");
 const qualificationsDiv = document.querySelector(".qualifications");
@@ -110,6 +109,7 @@ function addQualification() {
     field.classList.add("edu-field");
 
     const crossBtn = document.createElement("legend");
+    crossBtn.style.color = "red";
     crossBtn.textContent = "X";
     crossBtn.style.textAlign = "right";
     crossBtn.style.cursor = 'pointer';
@@ -162,7 +162,7 @@ function createQualificationPreview(node) {
     console.log("in the create qualification preview");
 
     const previewDiv = document.createElement("div");
-
+    previewDiv.classList.add("preview-div");
     const courseTitle = document.createElement("p");
     const details = document.createElement("p");
 
@@ -213,6 +213,13 @@ addWorkExperienceButton.addEventListener('click', () => {
     const experience = document.createElement('fieldset');
     experience.classList.add('work-experience');
 
+    const crossBtn = document.createElement("legend");
+    crossBtn.style.color = "red";
+    crossBtn.textContent = "X";
+    crossBtn.style.textAlign = "right";
+    crossBtn.style.cursor = 'pointer';
+    experience.appendChild(crossBtn);
+
     workCounter++;
 
     // Add input fields for details
@@ -250,24 +257,20 @@ addWorkExperienceButton.addEventListener('click', () => {
     descriptionInput.name = 'description';
     descriptionLabel.appendChild(descriptionInput);
 
-    // Add a button to remove the experience
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove Experience';
-
     // Append input fields and button to the experience element
     experience.appendChild(companyLabel);
     experience.appendChild(positionLabel);
     experience.appendChild(startDateLabel);
     experience.appendChild(endDateLabel);
     experience.appendChild(descriptionLabel);
-    experience.appendChild(removeButton);
+
 
     // Append the experience element to the work experiences div
     workExperiencesDiv.appendChild(experience);
 
     const preview = createWorkPreview(experience);
 
-    removeButton.addEventListener('click', () => {
+    crossBtn.addEventListener('click', () => {
         workCounter--;
         experience.remove();
         preview.remove();
@@ -286,6 +289,8 @@ function createWorkPreview(node) {
     console.log("in the create work preview section!!")
 
     const previewDiv = document.createElement("div");
+
+    previewDiv.classList.add("preview-div");
 
     const companyName = document.createElement("p");
     const workPosition = document.createElement('p');
@@ -342,9 +347,16 @@ let projectCounter = 0;
 
 addProjectButton.addEventListener('click', () => {
 
-    const project = document.createElement('div');
+    const project = document.createElement('fieldset');
     project.classList.add('project');
     projectCounter++;
+
+    const crossBtn = document.createElement("legend");
+    crossBtn.style.color = "red";
+    crossBtn.textContent = "X";
+    crossBtn.style.textAlign = "right";
+    crossBtn.style.cursor = 'pointer';
+    project.appendChild(crossBtn);
 
     // Add input fields for details
     const nameLabel = document.createElement('p');
@@ -364,22 +376,17 @@ addProjectButton.addEventListener('click', () => {
     const descriptionInput = document.createElement('textarea');
     descriptionLabel.appendChild(descriptionInput);
 
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove Project';
-
-
     // Append input fields and button to the project element
     project.appendChild(nameLabel);
     project.appendChild(linkLabel);
     project.appendChild(descriptionLabel);
-    project.appendChild(removeButton);
 
     // Append the project element to the projects div
     projectsDiv.appendChild(project);
 
     const preview = createProjectPreview(project)
 
-    removeButton.addEventListener('click', () => {
+    crossBtn.addEventListener('click', () => {
         projectCounter--;
         project.remove();
         preview.remove();
@@ -395,6 +402,8 @@ function createProjectPreview(node) {
     projectBlock.classList.remove("additional");
     const inputs = node.querySelectorAll("input");
     const previewDiv = document.createElement("div");
+
+    previewDiv.classList.add("preview-div");
 
     const projName = document.createElement("p");
     const projLink = document.createElement("a");
@@ -435,9 +444,16 @@ let certificateCounter = 0;
 
 addCertificateBtn.addEventListener("click", () => {
 
-    const certificate = document.createElement("div");
+    const certificate = document.createElement("fieldset");
     certificate.classList.add("certificate")
     certificateCounter++;
+
+    const crossBtn = document.createElement("legend");
+    crossBtn.style.color = "red";
+    crossBtn.textContent = "X";
+    crossBtn.style.textAlign = "right";
+    crossBtn.style.cursor = 'pointer';
+    certificate.appendChild(crossBtn);
 
     // input and fields
     const nameLabel = document.createElement("p");
@@ -464,20 +480,20 @@ addCertificateBtn.addEventListener("click", () => {
 
     certificateLinkLabel.appendChild(certificateLinkInput);
 
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove certificate';
+    // const removeButton = document.createElement('button');
+    // removeButton.textContent = 'Remove certificate';
 
 
     certificate.appendChild(nameLabel)
     certificate.appendChild(issuingOrgLabel)
     certificate.appendChild(certificateLinkLabel)
-    certificate.appendChild(removeButton);
+    // certificate.appendChild(removeButton);
 
     certificatesDiv.appendChild(certificate);
 
     const preview = createCertificatePreview(certificate);
 
-    removeButton.addEventListener('click', () => {
+    crossBtn.addEventListener('click', () => {
         certificateCounter--;
         certificate.remove();
         preview.remove();
@@ -494,6 +510,8 @@ function createCertificatePreview(node) {
     certificateBlock.classList.remove("additional")
     const inputs = node.querySelectorAll("input");
     const previewDiv = document.createElement("div");
+
+    previewDiv.classList.add("preview-div");
 
     const certiName = document.createElement("p");
     const certiIssuer = document.createElement("p");
@@ -523,53 +541,36 @@ function createCertificatePreview(node) {
     certificateBlock.appendChild(previewDiv)
     return previewDiv;
 }
-// let skillArr = [];
-// let academicArr = [];
-// let workArr = [];
-// let projectArr = [];
-// let certificateArr = [];
+const generateCVbtn = document.getElementById("generate-cv");
 
+generateCVbtn.addEventListener("click", function () {
+    const previewElement = document.querySelector(".preview");
 
-// // main save button
-// const mainSaveBtn = document.getElementById("main-save");
-// mainSaveBtn.addEventListener("click", function () {
-//     const skillInputs = document.querySelectorAll(".sec-wrap input");
+    const clonedPreview = previewElement.cloneNode(true);
+    const printWindow = window.open();
+    const styleLinks = document.querySelector("#style1-link");
 
-//     for (const input of skillInputs) {
-//         const trimmedValue = input.value.trim(); // Trim leading/trailing whitespace
-//         if (trimmedValue) { // Check if the trimmed value is not empty
-//             skillArr.push(trimmedValue);
-//         }
-//     }
-//     console.log(skillArr)
+    if (styleLinks.href && styleLinks.href.startsWith(window.location.origin)) {
+        const newLink = printWindow.document.createElement("link");
+        newLink.href = styleLinks.href;
+        newLink.rel = "stylesheet";
+        printWindow.document.head.appendChild(newLink);
+    }
 
-//     const eduField = document.querySelectorAll(".edu-field");
-
-//     for (field of eduField) {
-//         const dataObject = {};
-//         // Loop through all child divs of the fieldset
-//         for (const div of field.children) {
-//             if (div.tagName.toLowerCase() === 'div') { // Ensure it's a div element (optional)
-//                 // Loop through child divs within the current div
-//                 for (const childDiv of div.children) {
-//                     if (childDiv.tagName.toLowerCase() === 'div') { // Ensure it's a div element (optional)
-//                         // Get the span and input elements
-//                         const span = childDiv.querySelector('span');
-//                         const input = childDiv.querySelector('input');
-
-//                         if (span && input) { // Check if both elements exist
-//                             const key = span.textContent.trim(); // Get and trim the span text
-//                             const value = input.value; // Get the input value
-
-//                             dataObject[key] = value; // Store data in the object
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-
-//         academicArr.push(dataObject);
-//         // console.log(dataObject); // Output the resulting object
-//     }
-//     console.log(academicArr);
-// })
+    if (printWindow) {
+        printWindow.document.body.appendChild(clonedPreview);
+    }
+    else {
+        console.log("failed to create the print window")
+    }
+    if (printWindow) {
+        printWindow.focus();
+    }
+    setTimeout(() => {
+        printWindow.print();
+    }, 500)
+    // // Optional: Close the separate print window after printing
+    // if (printWindow) {
+    //     printWindow.close();
+    // }
+})

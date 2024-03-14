@@ -1,12 +1,13 @@
+/* this side does not contain any style of the preview section */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
 body {
     padding: 1rem;
+    font-family: sans-serif;
 }
 
 .navbar {
@@ -15,7 +16,7 @@ body {
     justify-content: space-around;
     height: 6.5rem;
     border: 2px solid black;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .main-wrap {
@@ -28,8 +29,10 @@ body {
 .right {
     border: 2px solid orange;
     width: 50%;
-    height: auto;
+    height: 140vh;
     /* background-color: #ddd; */
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 /* style for right side */
@@ -113,6 +116,7 @@ body {
     margin-bottom: 7px;
 }
 
+/* inside of the skill on right */
 .sec-wrap {
     display: flex;
 }
@@ -125,13 +129,6 @@ body {
     text-align: center;
 }
 
-.skill-preview {
-    font-size: 16px;
-    padding: 5px 8px;
-    margin-left: 1.5rem;
-    border: 2px solid #212121;
-    border-radius: 8px;
-}
 
 .remove-skill {
     border-radius: 30px;
@@ -143,56 +140,25 @@ body {
     font-weight: bolder;
 }
 
-.skill-block {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 10px;
-}
 
 
-/* education styling */
-.education {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-}
-
-.edu {
-    display: flex;
-    width: 45%;
-    justify-content: space-between;
+/* fieldset styling for every section */
+.edu-field,
+.certificate,
+.project,
+.work-experience {
+    padding-bottom: 10px;
+    border: 2px solid black;
 }
 
 legend {
     font-weight: 550;
     font-size: 1rem;
     padding: 5px 0;
-
 }
 
 .me {
     text-align: center;
-}
-
-
-
-
-/* this is the stylingg for the right side preview */
-.preview {
-    scale: 0.85;
-    border: 2px solid black;
-    /* padding: 25px; */
-    line-height: 24px;
-}
-
-.resume-head {
-    background-color: #363636;
-    color: #fff;
-    padding: 20px;
-}
-
-.resume-body {
-    padding: 25px 20px;
 }
 
 .work-experience p,
@@ -219,4 +185,11 @@ legend {
 
 .additional {
     display: none;
+}
+
+/* this is the stylingg for the right side preview */
+.preview {
+    scale: 0.85;
+    border: 2px solid black;
+    aspect-ratio: 1/1.41;
 }

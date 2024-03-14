@@ -6,13 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Build-page</title>
     <link rel="stylesheet" href="build.css">
+
+    <link rel="stylesheet" id="style-link" href="template1.css">
+    <!-- <link rel="stylesheet" id="style2-link" href="template2.css" disabled>
+    <link rel="stylesheet" id="style3-link" href="template3.css" disabled> -->
 </head>
 
 <body>
     <section class="navbar">
         <span>Home</span>
-        <span>Change temp</span>
-        <span>other action</span>
+        <span>Change Template style
+            <select id="template-changer">
+                <option value="1">Template 1</option>
+                <option value="2">Template 2</option>
+                <option value="3">Template 3</option>
+            </select>
+        </span>
     </section>
 
     <section class="mid">
@@ -34,17 +43,17 @@
 
                     <div class="resume-body">
                         <section class="summary-block">
-                            <h4>SUMMARY</h4>
+                            <h4>Summary</h4>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores laudantium doloribus
                                 commodi praesentium velit odit doloremque! Similique praesentium, ad error blanditiis
                                 dignissimos fugiat reprehenderit </p>
                         </section>
 
-                        <div>
+                        <section>
                             <h4>Skills</h4>
-                            <section class="skill-block">
-                            </section>
-                        </div>
+                            <div class="skill-block">
+                            </div>
+                        </section>
 
                         <section class="academic-block">
                             <h4>Academic Qualifications</h4>
@@ -62,14 +71,10 @@
                             <h4>Certification</h4>
                         </section>
                     </div>
-
                 </div>
-                <p>How do you like that.</p>
-
             </div>
 
             <div class="right">
-
                 <div class="form">
                     <!-- general data bc -->
                     <section class="general">
@@ -123,8 +128,6 @@
                             </div>
                         </div>
 
-
-
                         <!-- academic qualification -->
                         <div class="edu-wrap">
                             <legend>Academmic Qualification<span class="red"> * </span></legend>
@@ -162,20 +165,14 @@
                     </div>
     </section>
 
-    <!-- <center><button class="add-btn" id="main-save">Make Changes</button></center> -->
-
-    </div>
-    </div>
-    </div>
-    </section>
-
     <section class="footer">
         <div class="me">
             <p>hello user this is me, the dev of the page.</p>
+            <button id="generate-cv">Generate Resume</button>
         </div>
     </section>
-
     <script src="build.js"></script>
+    <script src="page.js"></script>
 </body>
 
 </html>
