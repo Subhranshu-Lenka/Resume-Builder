@@ -548,14 +548,12 @@ generateCVbtn.addEventListener("click", function () {
 
     const clonedPreview = previewElement.cloneNode(true);
     const printWindow = window.open();
-    const styleLinks = document.querySelector("#style1-link");
+    const styleLink = document.querySelector("#style-link");
 
-    if (styleLinks.href && styleLinks.href.startsWith(window.location.origin)) {
-        const newLink = printWindow.document.createElement("link");
-        newLink.href = styleLinks.href;
-        newLink.rel = "stylesheet";
-        printWindow.document.head.appendChild(newLink);
-    }
+    const newLink = printWindow.document.createElement("link");
+    newLink.href = styleLink.href;
+    newLink.rel = "stylesheet";
+    printWindow.document.head.appendChild(newLink);
 
     if (printWindow) {
         printWindow.document.body.appendChild(clonedPreview);
