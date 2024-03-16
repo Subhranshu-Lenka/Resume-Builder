@@ -1,6 +1,14 @@
 const nameField = document.querySelector(".name-field");
 const headlineField = document.querySelector(".headline-field");
-const detailsField = document.querySelector(".details-field");
+// const detailSpans = document.querySelectorAll(".details-field span");
+
+function toggleSpanClass(span) {
+    if (span.textContent.trim() === "") {
+        span.classList.add("additional");
+    } else {
+        span.classList.remove("additional");
+    }
+}
 
 const emailSpan = document.getElementById("email-field");
 const phoneSpan = document.getElementById("phone-field");
@@ -18,21 +26,26 @@ for (let i = 1; i < generalInputs.length; i++) {
                 break;
             case 2:
                 emailSpan.innerText = generalInputs[i].value;
+                toggleSpanClass(emailSpan);
                 break;
             case 3:
                 headlineField.innerText = `${generalInputs[i].value}`;
                 break;
             case 4:
                 phoneSpan.innerText = `   ${generalInputs[i].value}`;
+                toggleSpanClass(phoneSpan);
                 break;
             case 5:
                 linkedinSpan.innerText = `   ${generalInputs[i].value}`;
+                toggleSpanClass(linkedinSpan);
                 break;
             case 6:
-                citySpan.innerText = `   ${generalInputs[i].value}`;
+                citySpan.innerText = `   ${generalInputs[i].value},`;
+                toggleSpanClass(citySpan);
                 break;
             case 7:
                 pincodeSpan.innerText = `   ${generalInputs[i].value}`;
+                toggleSpanClass(pincodeSpan);
                 break;
         }
     });

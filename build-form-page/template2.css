@@ -11,19 +11,30 @@
 }
 
 .resume-head {
-    background-color: #888;
-    color: black;
+    background-color: #484848;
+    color: white;
+    text-align: center;
+    /* border-bottom: 10px solid red; */
+    position: relative;
 }
 
-.resume-body {
-    color: red;
+.resume-head:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-image: linear-gradient(135deg, lightgreen, green);
 }
 
 .resume-head h1 {
+    text-transform: capitalize;
     font-size: 2rem;
     margin-top: 20px;
-    font-weight: light;
+    font-weight: lighter;
 }
+
 
 .resume-head p {
     font-size: medium;
@@ -32,13 +43,26 @@
 
 .resume-head span {
     font-size: small;
-    margin-right: 15px;
-    font-weight: 500
+    margin-right: 10px;
+    font-weight: 500;
+    border-right: 2px solid white;
+    padding-right: 10px;
+}
+
+.resume-head span:nth-last-child(2) {
+    margin: 0px;
+    border: none;
+    padding: 0;
 }
 
 .resume-body section {
-    margin-top: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
+    padding: 15px 0;
+    border-bottom: 1px solid black;
+}
+
+.resume-body section:last-child {
+    border: none;
 }
 
 .resume-body section>h4 {
@@ -46,6 +70,13 @@
     letter-spacing: 2px;
     font-weight: bold;
     font-size: large;
+    color: #777;
+}
+
+.resume-body section>*:not(h4) {
+    position: relative;
+    left: 15%;
+    max-width: 80%;
 }
 
 .skill-block {
