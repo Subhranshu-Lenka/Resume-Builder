@@ -19,6 +19,7 @@
     font-size: 2rem;
     margin-top: 20px;
     font-weight: light;
+    text-transform: uppercase;
 }
 
 .resume-head p {
@@ -30,6 +31,12 @@
     font-size: small;
     margin-right: 15px;
     font-weight: 500
+}
+
+.resume-head span:nth-last-child(2) {
+    margin: 0px;
+    /* border: none; */
+    padding: 0;
 }
 
 .resume-body section {

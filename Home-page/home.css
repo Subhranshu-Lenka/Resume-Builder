@@ -92,10 +92,10 @@ body {
 }
 
 .temp {
-    height: 33.75rem;
-    width: 23.75rem;
+    /* height: 33.75rem; */
+    aspect-ratio: 1/1.41;
+    width: 25vw;
     border: 2px solid whitesmoke;
-
 }
 
 .template1 {
